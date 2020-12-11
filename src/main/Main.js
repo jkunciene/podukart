@@ -1,5 +1,6 @@
 import { Form } from 'formik';
 import React, {useState, useEffect} from 'react'
+import Seach from '../search/Seach';
 
 const Main = () => {
     //STATE - TOP LEVEL: always called in the exact same place
@@ -9,23 +10,21 @@ const Main = () => {
 
     //useEffect need two values - method & value
     //method will be execute only when value is change
-
+const getFillms = async (searchValue)=>{
+   const url =`http://www.omdbapi.com/?s=${searchValue}&apikey=263d22d8`
+   const response = await fetch(url)
+    const responseJson = await response.json();
+    if(responseJson.Seach){setFilms(responseJson.Seach) }  
+}
     useEffect(()=>{ 
-         fetch(`https://www.omdbapi.com/?apikey=e4db3ced&t=${searchValue}`)
-        .then(response => response.json())
-        .then(json => setFilms(json))     
+         getFillms(searchValue)  ;  
     }, [searchValue])
 
-console.log(searchValue)
-console.log(films)
+
     return (
         <div>            
-                <input type='text'
-                placeholder='search your film...'
-                value={searchValue}
-                onChange={(e)=> setSearchValue(e.target.value)}/>
-            
-            
+               <Seach searchValue={searchValue} setSearchValue={setSearchValue}/>
+                <Form movies={films}/>
         </div>
     )
 }
