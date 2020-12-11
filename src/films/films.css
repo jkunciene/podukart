@@ -1,0 +1,13 @@
+.filmslayout{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+img{
+    width: 150px;
+}
+.filmcard{
+    border: 1px solid rgb(29, 26, 26);
+    margin-right: 5px;
+    text-align: center;
+}
