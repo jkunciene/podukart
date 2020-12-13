@@ -7,7 +7,7 @@ const Seach = (props) => {
              <input type='text'
                 placeholder='search your film...'
                 value={props.value}
-                onChange={(e)=>{props.setSearchValue(e.target.value)}}
+                onKeyPress={(e)=>{props.setSearchValue(e.target.value)}}
                 />
         </div>
     )
