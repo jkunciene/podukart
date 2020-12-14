@@ -1,15 +1,30 @@
-import React from 'react'
+import React, {useState} from 'react'
 
-const Seach = (props) => {
-    console.log(props)
+function Seach({inputValue}) {
+
+    const [movieTitle,setMovieTitle]= useState("");
+    const handleSubmit=(e)=>{
+        e.preventDefault();
+        inputValue(movieTitle);
+        setMovieTitle("");
+    }
     return (
-        <div>
-             <input type='text'
-                placeholder='search your film...'
-                value={props.value}
-                onKeyPress={(e)=>{props.setSearchValue(e.target.value)}}
-                />
+
+        <div className='container'>
+            <h2 className='row justify-content-center'>Find your movie</h2>
+            <form className='row  justify-content-center' onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <input
+                        type="text"
+                        name="title"
+                        onChange={(e)=>setMovieTitle(e.target.value)}
+                        value={movieTitle}
+                        className="form-control"
+                        placeholder="Write movie title"/>
+                </div>
+            </form>
         </div>
+
     )
 }
 
