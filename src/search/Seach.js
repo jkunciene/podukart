@@ -5,8 +5,13 @@ function Seach({inputValue}) {
     const [movieTitle,setMovieTitle]= useState("");
     const handleSubmit=(e)=>{
         e.preventDefault();
-        inputValue(movieTitle);
-        setMovieTitle("");
+        if(movieTitle==""){
+            alert("Iveskite filmo pavadinima")
+        } else{
+            inputValue(movieTitle);
+            setMovieTitle("");
+        }
+
     }
     return (
 
