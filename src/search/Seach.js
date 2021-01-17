@@ -5,7 +5,7 @@ function Seach({inputValue}) {
     const [movieTitle,setMovieTitle]= useState("");
     const handleSubmit=(e)=>{
         e.preventDefault();
-        if(movieTitle==""){
+        if(movieTitle===""){
             alert("Iveskite filmo pavadinima")
         } else{
             inputValue(movieTitle);
